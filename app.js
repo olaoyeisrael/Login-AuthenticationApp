@@ -12,9 +12,9 @@ const dbURI = 'mongodb+srv://Israel:Israel123@nodeapp.3bllk.mongodb.net/node-app
 mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true})
 .then((result)=>{let port = process.env.PORT;
     if (port == null || port == "") {
-      port = 3000;
+      port = 8000;
     }
-    app.listen(port);})
+    app.listen(port,()=>{console.log("Server has started successfully");})})
 .catch((err)=> console.log(err))
 
 app.set('view engine', 'ejs')
