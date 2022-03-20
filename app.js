@@ -10,7 +10,11 @@ app.use(cookieParser());
 
 const dbURI = 'mongodb+srv://Israel:Israel123@nodeapp.3bllk.mongodb.net/node-app?retryWrites=true&w=majority'
 mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true})
-.then((result)=>{app.listen(3000)})
+.then((result)=>{let port = process.env.PORT;
+    if (port == null || port == "") {
+      port = 3000;
+    }
+    app.listen(port);})
 .catch((err)=> console.log(err))
 
 app.set('view engine', 'ejs')
